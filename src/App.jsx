@@ -1,14 +1,15 @@
 import React from 'react'
-import { useState } from 'react'
 import './App.css';
 import './index.css';
+import Layout from './layout/Layout';
+import MainView from './pages/MainView';
 
 
 function App() {
   return (
-    <h1 className="text-3xl font-bold underline text-red-950">
-      Hello world!
-    </h1>
+    <Layout>
+      <MainView />
+      </Layout>
   )
 }
 
