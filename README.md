@@ -1,7 +1,7 @@
 # A Slide Show Builder
 
 ### Tools used 
-- ReactJS & TailwindCSS
+- Vite JavaScript+SWC plugin & ReactJS & TailwindCSS
 
 ### Features and Screenshots 
 > Quick note: I did not use either local storage or indexedDb for saving the projects, and edit, delete items should be added Soon after the edition of Srorage.
