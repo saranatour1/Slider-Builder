@@ -3,29 +3,13 @@ import './App.css';
 import './index.css';
 import Layout from './layout/Layout';
 import MainView from './pages/MainView';
-import { useState } from 'react';
-import { useEffect } from 'react';
 import {Routes , Route} from 'react-router-dom';
 import Slides from './pages/Slides';
+import useProjects from './hooks/useProjects';
 
 function App() {
-  
   // initalising the Projects in the main App.
-  const [projects, setProjects] = useState([]);
-
-
-  
-  const addProject = (projct) => {
-    setProjects(prev => [
-      ...prev,
-      projct
-    ])
-  }
-
-  useEffect(()=>{
-    console.log(projects)
-  },[projects])
-  
+  const {projects, addProject} = useProjects([]);
   return (
     <Layout projects={projects}>
       <Routes>
