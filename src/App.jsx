@@ -5,7 +5,8 @@ import Layout from './layout/Layout';
 import MainView from './pages/MainView';
 import { useState } from 'react';
 import { useEffect } from 'react';
-
+import {Routes , Route} from 'react-router-dom';
+import Slides from './pages/Slides';
 
 function App() {
   
@@ -27,7 +28,11 @@ function App() {
   
   return (
     <Layout projects={projects}>
-      <MainView addProject={(item)=>addProject(item)}/>
+      <Routes>
+        <Route path='/' element={ <MainView addProject={(item)=>addProject(item)}/>}/>
+        <Route path='/preview/:title' element={<Slides projects={projects}/>} />
+      </Routes>
+
     </Layout>
   )
 }

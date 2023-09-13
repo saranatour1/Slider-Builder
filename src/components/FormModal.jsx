@@ -12,6 +12,7 @@ function FormModal({addProject ,closeModal}) {
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [preview, setPreview] =useState("");
 
   // the slider form data so that I do not loose state
 
@@ -22,14 +23,13 @@ function FormModal({addProject ,closeModal}) {
   const [sTitle, setStitle] = useState("");
   const [sContent, setScontent] = useState("");
 
-  const [imageFile, setImageFile] = useState(null);
   const [imagePreviewUrl, setImagePreviewUrl] = useState("");
-  const [tempText, setTempText] = useState("");
+
 
 
 
   const addSliders = () => {
-    if (tempText) {
+    if (imagePreviewUrl) {
     // @ts-ignore
     setSliders((prevSliders) => [
       ...prevSliders,
@@ -37,7 +37,6 @@ function FormModal({addProject ,closeModal}) {
         title: sTitle,
         content: sContent,
         imgUrl: imagePreviewUrl,
-        tempText: tempText,
       },
     ]);
         // slides.current++;
@@ -52,9 +51,7 @@ function FormModal({addProject ,closeModal}) {
   const resetSliders =()=>{
     setStitle("");
     setScontent("");
-    setImageFile(null);
     setImagePreviewUrl("");
-    setTempText("");
     }
 
 
@@ -65,6 +62,7 @@ function FormModal({addProject ,closeModal}) {
       addProject(        {
         title:title,
         content:content,
+        preview:sliders[0].imgUrl,
         slides:sliders,
       })
 
@@ -81,41 +79,15 @@ function FormModal({addProject ,closeModal}) {
     !validateStep() ? setIsValid(true) : setIsValid(false);
   };
 
-  // https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types
-  const fileTypes = [
-    "image/apng",
-    "image/bmp",
-    "image/gif",
-    "image/jpeg",
-    "image/pjpeg",
-    "image/png",
-    "image/svg+xml",
-    "image/tiff",
-    "image/webp",
-    "image/x-icon",
-  ];
 
-  function validFileType(file) {
-    return fileTypes.includes(file.type);
-  }
 
   const handleImageChange = (e) => {
-    setTempText(e.target.files[0].name);
-    console.log(e.target.files[0].name);
-    const selectedFile = e.target.files[0];
-    if (selectedFile && validFileType(selectedFile)) {
-      const reader = new FileReader();
 
-      reader.onloadend = () => {
-        setImageFile(selectedFile);
-        // @ts-ignore
-        setImagePreviewUrl(reader.result);
-      };
+        setImagePreviewUrl(e.target.value);
+        
 
-      reader.readAsDataURL(selectedFile);
-    } else {
-      console.log("Invalid file type. Please select a valid image file.");
-    }
+        console.log("Please use a valid link!");
+     
   };
 
   // functions to forward a step or back up a step
@@ -229,10 +201,7 @@ function FormModal({addProject ,closeModal}) {
                     slides={slides}
                     showImgForm={showImgForm}
                     handleImageChange={(e) => handleImageChange(e)}
-                    imageFile={imageFile}
                     imagePreviewUrl={imagePreviewUrl}
-                    fileTypes={fileTypes}
-                    tempText={tempText}
                     addSlide={()=>addSliders()}
                     createSlider={()=> {createSlider(); }}
                   />

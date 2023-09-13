@@ -12,10 +12,7 @@ function SliderForm({
   slides,
   showImgForm,
   handleImageChange,
-  imageFile,
   imagePreviewUrl,
-  fileTypes,
-  tempText,
   addSlide,
   createSlider,
 }) {
@@ -65,7 +62,7 @@ function SliderForm({
               className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
             >
               <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                <span className="font-semibold">Click to upload</span>
+                <span className="font-semibold">Paste a link to upload</span>
               </p>
               <p className="text-xs text-gray-500 dark:text-gray-400">
                 SVG, PNG, JPG or GIF (MAX. 800x400px)
@@ -81,13 +78,14 @@ function SliderForm({
               )}
               <input
                 id="dropzone-file"
-                type="file"
-                className="hidden"
-                accept={fileTypes.join(",")}
+                type="url"
+                className=""
+                placeholder="https://somedomain.com/image.imageformat"
                 onChange={(e) => handleImageChange(e)}
-                onInput={() => console.log(imagePreviewUrl)}
+                value={imagePreviewUrl}
+
               />
-              <span>{tempText}</span>
+              <span >{imagePreviewUrl}</span>
             </label>
           </div>
         )}
@@ -132,10 +130,7 @@ SliderForm.propTypes = {
   slides: PropTypes.number.isRequired, 
   showImgForm: PropTypes.func.isRequired,
   handleImageChange: PropTypes.func.isRequired,
-  imageFile: PropTypes.object, 
   imagePreviewUrl: PropTypes.string,
-  fileTypes: PropTypes.arrayOf(PropTypes.string).isRequired,
-  tempText: PropTypes.string,
   addSlide: PropTypes.func.isRequired,
   createSlider:PropTypes.func.isRequired,
 };
