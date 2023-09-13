@@ -8,23 +8,25 @@
 
 - when you visit the page for the first time:
 
+
+
 <p float="center">
-  <img src="https://github.com/saranatour1/Slider-Builder/assets/77834808/eb63722c-cb73-4a86-a7c6-e992469f917d" alt="Screen Shot 1" width="45%">
-  <img src="https://github.com/saranatour1/Slider-Builder/assets/77834808/2726c542-079d-4988-abf9-eefc78903475" alt="Screen Shot 2" width="45%">
+  <img src="https://github.com/saranatour1/Slider-Builder/assets/77834808/f623a838-fea3-482c-b486-fba86c20bf2e" alt="Screen Shot 1" width="45%">
+  <img src="https://github.com/saranatour1/Slider-Builder/assets/77834808/924c78b3-a6d6-4b5e-9e33-891ce9ab04d5" alt="Screen Shot 2" width="45%">
 </p>
 
 - When You click the button to start adding a Project to your collection:
-![Screen Shot 2023-09-14 at 01 15 06](https://github.com/saranatour1/Slider-Builder/assets/77834808/1332d56a-7132-41dd-bfbe-77c0ab35cbab)
+![Screen Shot 2023-09-14 at 01 15 06](https://github.com/saranatour1/Slider-Builder/assets/77834808/452904dc-fcd5-474e-9cee-e9b28da5179c)
   - after Succesfully adding a Title, along with descreption, you can start adding Slides to Your project!
-     ![Screen Shot 2023-09-14 at 01 17 45](https://github.com/saranatour1/Slider-Builder/assets/77834808/5b712b27-1c2e-4f28-a165-5ae796dbf519)
+     ![Screen Shot 2023-09-14 at 01 17 45](https://github.com/saranatour1/Slider-Builder/assets/77834808/55ced7c5-fd45-423d-aa1a-dec28f022ea5)
   - after adding a few slides, specifically more than 1 slide, you can see the submit button at the bottom right corner,
-     ![Screen Shot 2023-09-14 at 01 47 58](https://github.com/saranatour1/Slider-Builder/assets/77834808/15fe1549-f6f9-47fe-a746-0c6de60adfe4)
+     ![Screen Shot 2023-09-14 at 01 47 58](https://github.com/saranatour1/Slider-Builder/assets/77834808/450065db-e052-4051-9c43-2b5f1be9233b)
 
 - When submitting, you'll be redirectd to the main Page, where now the side bar has Your Projects.
-  ![Screen Shot 2023-09-14 at 01 22 55](https://github.com/saranatour1/Slider-Builder/assets/77834808/f921610c-6598-42e3-b048-f5eb8f59e503)
+  ![Screen Shot 2023-09-14 at 01 22 55](https://github.com/saranatour1/Slider-Builder/assets/77834808/bda89657-c0e1-424a-bf79-2fbe394bc600)
 
   - when You click on the title, you'll be redirected to the Project Page:
-  ![Screen Shot 2023-09-14 at 01 23 05](https://github.com/saranatour1/Slider-Builder/assets/77834808/5ba1ab53-b6a2-432f-a5a6-d95f1ed23f63)
+  ![Screen Shot 2023-09-14 at 01 23 05](https://github.com/saranatour1/Slider-Builder/assets/77834808/4fdc9cd4-e5bd-4cfa-b5a3-b5a053b7b163)
   > You can intuitivly go left and right.
 
 ### What's Next? 
