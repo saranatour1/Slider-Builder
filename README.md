@@ -1,5 +1,23 @@
 # A Slide Show Builder
-
+### How to use:
+- first head over to the github repository and clone it ,by either using the CLI on your device:
+```bash
+  git clone https://github.com/saranatour1/Slider-Builder.git
+```
+- next, go to the directory where the repo was cloned:
+```bash
+  cd Slider Builder
+```
+- next download the dependencies:
+```bash
+  pnpm i 
+```
+- after the download has finished, run the dev server:
+```bash
+  pnpm run dev 
+```
+- then head over to [localhost:5173](http://localhost:5173/), and voilà! the server will render the main page.
+    
 ### Tools used 
 - Vite JavaScript+SWC plugin & ReactJS & TailwindCSS
 
