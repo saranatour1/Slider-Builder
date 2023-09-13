@@ -1,7 +1,8 @@
 import React from "react";
-import {AiOutlinePlus , AiOutlineMinus} from "react-icons/ai";
+import {AiOutlinePlus } from "react-icons/ai";
 import PropTypes from "prop-types"; 
 import {GiConfirmed} from "react-icons/gi"
+import SharedInput from "./SharedInput";
 
 function SliderForm({
   title,
@@ -22,39 +23,14 @@ function SliderForm({
         Add a title to your <span>slide #{slides}</span>
       </h3>
       <div>
-        <label
-          htmlFor="sliderTitle"
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-        >
-          title
-        </label>
-        <input
-          type="text"
-          name="sliderTitle"
-          id="sliderTitle"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-          placeholder="Type a title to your slide"
-          onChange={(event) => setTitle(event.target.value)}
-          onBlur={() => showImgForm()}
-          value={title}
+        <SharedInput
+        onChangeTitle={(text)=>setTitle(text)}
+        onChangeContent={(text)=> setContent(text)}
+        titleValue={title}
+        contentValue={content}
+        onBlurEvent= {() => showImgForm()}
         />
 
-        <div className="sm:col-span-2">
-          <label
-            htmlFor="sdescription"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-            Description
-          </label>
-          <textarea
-            id="sdescription"
-            rows="4"
-            className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-            placeholder="add a descreption to your slide"
-            onChange={(event) => setContent(event.target.value)}
-            value={content}
-          ></textarea>
-        </div>
         {isValid && (
           <div className="flex items-center justify-center w-full">
             <label
