@@ -13,6 +13,7 @@ function Layout(props) {
 
 Layout.propTypes = {
   children: PropTypes.node,
+  projects: PropTypes.array.isRequired, 
 };
 
 export default Layout;

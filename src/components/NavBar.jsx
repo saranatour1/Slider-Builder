@@ -1,19 +1,16 @@
+import PropTypes from "prop-types";
 import React, { useState } from "react";
 import AsideBar from "./AsideBar";
 
-function NavBar({projects}) {
+function NavBar({ projects }) {
   // Open Navigation menu and Close it
+
   const [isOpen, setIsOpen] = useState(false);
 
-  const openNavMenu = () => {
-    setIsOpen(!isOpen);
-    // console.log(isOpen);
-  };
-
   return (
-    <nav className="bg-white border-gray-200 dark:bg-gray-900  mx-auto">
+    <nav className="bg-white border-gray-200 dark:bg-gray-900  mx-auto transition-transform">
       <button
-        onClick={openNavMenu}
+        onClick={() => setIsOpen(!isOpen)}
         data-drawer-target="cta-button-sidebar"
         data-drawer-toggle="cta-button-sidebar"
         aria-controls="cta-button-sidebar"
@@ -36,9 +33,15 @@ function NavBar({projects}) {
         </svg>
       </button>
 
-      {isOpen && <AsideBar closeNav={() => openNavMenu()} projects={projects} />}
+      {isOpen && (
+        <AsideBar closeNav={() => setIsOpen(false)} projects={projects} />
+      )}
     </nav>
   );
 }
+
+NavBar.propTypes = {
+  projects: PropTypes.array.isRequired,
+};
 
 export default NavBar;

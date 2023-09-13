@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import FormModal from "../components/FormModal";
+import PropTypes from 'prop-types';
 
 function MainView({addProject}) {
   // functions to open the actual form 
@@ -22,14 +23,11 @@ function MainView({addProject}) {
 
         <div className="flex justify-center m-5">
           <button id="defaultModalButton" data-modal-toggle="defaultModal" className="block  bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" type="button" 
-          onClick={()=>openSliderForm()}
+          onClick={()=> openSliderForm()}
           >
           Create a slider
           </button>
       </div>
-
-
-
       </div>
     </div>
     
@@ -37,5 +35,9 @@ function MainView({addProject}) {
     </>
   );
 }
+
+MainView.propTypes = {
+  addProject: PropTypes.func.isRequired, 
+};
 
 export default MainView;

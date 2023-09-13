@@ -1,93 +1,56 @@
 import PropTypes from "prop-types";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { GrFormNextLink, GrFormPreviousLink } from "react-icons/gr";
 
+import useSliderFormState from "../hooks/useSliderForm";
+import useSliderList from "../hooks/useSliderList";
 import SliderForm from "./SliderForm";
-import { useEffect } from "react";
 
-function FormModal({addProject ,closeModal}) {
+function FormModal({ addProject, closeModal }) {
+  // State Handling for the form at step 0
+  const {
+    title,
+    setTitle,
+    content,
+    setContent,
+    imagePreviewUrl,
+    setImagePreviewUrl,
+    isValid,
+    setIsValid,
+    resetForm,
+  } = useSliderFormState();
+
+  const { sliders, addSlider, slides, resetSliders } = useSliderList();
 
   const [step, setStep] = useState(0);
-  const [sliders, setSliders] = useState([]);
-
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [preview, setPreview] =useState("");
-
-  // the slider form data so that I do not loose state
-
-  const [slides,setSlides] = useState(1);
-
-  const [isValid, setIsValid] = useState(false);
 
   const [sTitle, setStitle] = useState("");
   const [sContent, setScontent] = useState("");
 
-  const [imagePreviewUrl, setImagePreviewUrl] = useState("");
-
-
-
-
-  const addSliders = () => {
-    if (imagePreviewUrl) {
-    // @ts-ignore
-    setSliders((prevSliders) => [
-      ...prevSliders,
-      {
-        title: sTitle,
-        content: sContent,
-        imgUrl: imagePreviewUrl,
-      },
-    ]);
-        // slides.current++;
-
-
-      setSlides(slides+1);
-    }
-    
-    resetSliders();
+  const resetSlideContent = () => {
+    setScontent("");
+    setStitle("");
+    setImagePreviewUrl("");
   };
 
-  const resetSliders =()=>{
-    setStitle("");
-    setScontent("");
-    setImagePreviewUrl("");
-    }
-
-
-    
-    //Move this into either context or localstorage hook 
-    const createSlider = () => {
-
-      addProject(        {
-        title:title,
-        content:content,
-        preview:sliders[0].imgUrl,
-        slides:sliders,
-      })
-
-      resetProject();
-      closeModal();
-    };
-    
-    const resetProject = () =>{
-      setContent("");
-      setTitle("");
-    }
+  //Move this into either context or localstorage hook
+  const createSlider = () => {
+    addProject({
+      title: title,
+      content: content,
+      preview: sliders[0].imgUrl,
+      slides: sliders,
+    });
+    resetForm();
+    closeModal();
+  };
 
   const showImgForm = () => {
     !validateStep() ? setIsValid(true) : setIsValid(false);
   };
 
-
-
   const handleImageChange = (e) => {
-
-        setImagePreviewUrl(e.target.value);
-        
-
-        console.log("Please use a valid link!");
-     
+    setImagePreviewUrl(e.target.value);
   };
 
   // functions to forward a step or back up a step
@@ -107,11 +70,6 @@ function FormModal({addProject ,closeModal}) {
       }
     }
   };
-
-
-
-
-
 
   return (
     <>
@@ -202,8 +160,13 @@ function FormModal({addProject ,closeModal}) {
                     showImgForm={showImgForm}
                     handleImageChange={(e) => handleImageChange(e)}
                     imagePreviewUrl={imagePreviewUrl}
-                    addSlide={()=>addSliders()}
-                    createSlider={()=> {createSlider(); }}
+                    addSlide={() => {
+                      addSlider(sTitle, sContent, imagePreviewUrl);
+                      resetSlideContent();
+                    }}
+                    createSlider={() => {
+                      createSlider();
+                    }}
                   />
                 )}
 
@@ -234,6 +197,7 @@ function FormModal({addProject ,closeModal}) {
 
 FormModal.propTypes = {
   closeModal: PropTypes.func,
+  addProject: PropTypes.func,
 };
 
 export default FormModal;
