@@ -6,11 +6,11 @@ function MainView(props) {
   const [openModal, setOpenModal] = useState(false);
 
   const openSliderForm =()=>{
-    // console.log(openModal);
     setOpenModal(!openModal);
   }
 
   return (
+    <>
     <div className="grid place-items-center h-screen -mt-12">
       <div className="w-full p-8 col-span-2 justify-center justify-self-center mx-auto  text-center text-lg">
         <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
@@ -26,11 +26,14 @@ function MainView(props) {
           Create product
           </button>
       </div>
-      {openModal &&  <FormModal closeModal={()=>openSliderForm()}/>}
+
 
 
       </div>
     </div>
+    
+    {openModal &&  <FormModal closeModal={()=>openSliderForm()}/>}
+    </>
   );
 }
 
