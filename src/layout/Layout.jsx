@@ -4,10 +4,10 @@ import NavBar from '../components/NavBar';
 
 function Layout(props) {
   return (
-    <div className='w-11/12 mx-auto'>
+    <main className='w-11/12 mx-auto'>
       <NavBar projects={props.projects} />
       {props.children}
-    </div>
+    </main>
   );
 }
 
