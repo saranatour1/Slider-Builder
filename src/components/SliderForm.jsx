@@ -1,6 +1,7 @@
 import React from "react";
 import {AiOutlinePlus , AiOutlineMinus} from "react-icons/ai";
 import PropTypes from "prop-types"; 
+import {GiConfirmed} from "react-icons/gi"
 
 function SliderForm({
   title,
@@ -104,11 +105,12 @@ function SliderForm({
       }
 
       {slides > 2 ? 
-            <button type="button" className="mt-1  text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:focus:ring-blue-800 dark:hover:bg-blue-500">
-            <AiOutlineMinus
-            className="h-4 w-4"
+            <button type="button" className="mt-1  text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:focus:ring-blue-800 dark:hover:bg-blue-500" 
             onClick={()=> createSlider()}
-            />
+            >
+
+   
+            <GiConfirmed             className="h-4 w-4"/>
             <span className="sr-only">go back a slide</span>
           </button>
           

@@ -1,11 +1,12 @@
 import PropTypes from "prop-types";
 import React, { useRef, useState } from "react";
 import { GrFormNextLink, GrFormPreviousLink } from "react-icons/gr";
-import {GiConfirmed} from "react-icons/gi"
+
 import SliderForm from "./SliderForm";
 import { useEffect } from "react";
 
-function FormModal(props) {
+function FormModal({addProject ,closeModal}) {
+
   const [step, setStep] = useState(0);
   const [sliders, setSliders] = useState([]);
 
@@ -24,7 +25,7 @@ function FormModal(props) {
   const [imageFile, setImageFile] = useState(null);
   const [imagePreviewUrl, setImagePreviewUrl] = useState("");
   const [tempText, setTempText] = useState("");
-  const [currentSlide, setCurrentSlide] =useState(sliders[slides] ?? null);
+
 
 
   const addSliders = () => {
@@ -56,21 +57,25 @@ function FormModal(props) {
     setTempText("");
     }
 
-    // // Do this later
-    // const prevSlide =()=>{
-    //   setSlides(prev => prev-=1);
-    //   // console.log(currentSlide ,slides)
-    //   resetSliders()
-    //   // setStitle(currentSlide?.title);
-    //   // setScontent(currentSlide?.content);
-    //   // setImagePreviewUrl(currentSlide?.imgUrl);
-    //   // setTempText(currentSlide?.tempText);
-    // }
 
-    const createSlider =()=>{
+    
+    //Move this into either context or localstorage hook 
+    const createSlider = () => {
 
+      addProject(        {
+        title:title,
+        content:content,
+        slides:sliders,
+      })
+
+      resetProject();
+      closeModal();
+    };
+    
+    const resetProject = () =>{
+      setContent("");
+      setTitle("");
     }
-
 
   const showImgForm = () => {
     !validateStep() ? setIsValid(true) : setIsValid(false);
@@ -131,11 +136,10 @@ function FormModal(props) {
     }
   };
 
-  useEffect(()=>{
-    // addSliders();
-    console.log(sliders);
-    console.log(slides)
-  },[sliders,slides])
+
+
+
+
 
   return (
     <>
@@ -157,7 +161,7 @@ function FormModal(props) {
                 type="button"
                 className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
                 data-modal-toggle="defaultModal"
-                onClick={() => props.closeModal()}
+                onClick={() => closeModal()}
               >
                 <svg
                   aria-hidden="true"
@@ -230,7 +234,7 @@ function FormModal(props) {
                     fileTypes={fileTypes}
                     tempText={tempText}
                     addSlide={()=>addSliders()}
-                    createSlider={()=> createSlider()}
+                    createSlider={()=> {createSlider(); }}
                   />
                 )}
 

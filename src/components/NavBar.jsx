@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AsideBar from "./AsideBar";
 
-function NavBar(props) {
+function NavBar({projects}) {
   // Open Navigation menu and Close it
   const [isOpen, setIsOpen] = useState(false);
 
@@ -36,7 +36,7 @@ function NavBar(props) {
         </svg>
       </button>
 
-      {isOpen && <AsideBar closeNav={() => openNavMenu()} />}
+      {isOpen && <AsideBar closeNav={() => openNavMenu()} projects={projects} />}
     </nav>
   );
 }

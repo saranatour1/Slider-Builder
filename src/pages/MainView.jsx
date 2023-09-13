@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import FormModal from "../components/FormModal";
 
-function MainView(props) {
+function MainView({addProject}) {
   // functions to open the actual form 
   const [openModal, setOpenModal] = useState(false);
+  
 
   const openSliderForm =()=>{
     setOpenModal(!openModal);
@@ -23,7 +24,7 @@ function MainView(props) {
           <button id="defaultModalButton" data-modal-toggle="defaultModal" className="block  bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" type="button" 
           onClick={()=>openSliderForm()}
           >
-          Create product
+          Create a slider
           </button>
       </div>
 
@@ -32,7 +33,7 @@ function MainView(props) {
       </div>
     </div>
     
-    {openModal &&  <FormModal closeModal={()=>openSliderForm()}/>}
+    {openModal &&  <FormModal closeModal={()=>openSliderForm()} addProject={addProject} />}
     </>
   );
 }
